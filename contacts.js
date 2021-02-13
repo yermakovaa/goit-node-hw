@@ -39,7 +39,7 @@ function removeContact(contactId) {
       return console.error(`Contact with ID: ${contactId} not found!`.red);
     }
 
-    fs.writeFile(contactsPath, JSON.stringify(newContacts), err => {
+    fs.writeFile(contactsPath, JSON.stringify(newContacts, null, 2), err => {
       if (err) return console.error(err.message);
 
       console.log(
@@ -72,7 +72,7 @@ function addContact(name, email, phone) {
     const newContact = { id: shortid.generate(), name, email, phone };
     const newContacts = [...contacts, newContact];
 
-    fs.writeFile(contactsPath, JSON.stringify(newContacts), err => {
+    fs.writeFile(contactsPath, JSON.stringify(newContacts, null, 2), err => {
       if (err) return console.error(err.message);
 
       console.log('Contact added successfully! New list of contacts:'.magenta);
